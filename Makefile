@@ -2,4 +2,4 @@
 
 build:
 	@echo "Building..."
-	@g++ -o cpu.out main.cpp cpu.cpp process.cpp
+	@g++ -o cpu.out main.cpp CPU.cpp Process.cpp
