@@ -5,28 +5,28 @@
 #include <string>
 #include <vector>
 
-// global counter
-// int counter = -1;
-
 class Process {
    public:
-    static int counter;
-    int value;
-    int pc;
-    int pid;
-    int ppid;
-    int prio;
+    static int counter;  // for tracking the pid/ppid - "global"
+    int value;           // holds the current value of the running process
+    int pc;              //  program counter of the process
+    int pid;             // holds the  pid of the running process
+    int ppid;            // holds the  ppid of the running process
     int startingPoint;
-    std::vector<std::string> lines;
-    void setPpid(int ppid);
+    int blockedCounter;  // > 0 if blocked
+    int ticksBlocked;    // how many ticks the process was blocked
+    int endPoint;  // the cpu step when the process ended -> Measure the total
+                   // time of the process
+    std::string name;
 
-    std::string getLine(int cpu_pc);
+    std::string getLine();
 
-    Process();
-    void setLines(std::vector<std::string> lines);
+    Process(std::string name, std::vector<std::string> lines, int ppid,
+            int startingPoint);
     void print();
 
    private:
+    std::vector<std::string> lines;
 };
 
 #endif

@@ -23,15 +23,19 @@ ScheduleMode askForScheduleMode() {
 }
 
 int run(CPU* cpu, bool debugMode) {
-    if (debugMode) {
-        std::cout << "Debug mode is on" << std::endl;
-    }
-    while (true) {
-        cpu->interpretInstruction();
+    // if (debugMode) {
+    //     std::cout << "Debug mode is on" << std::endl;
+    // } else {
+    while (cpu->interpretInstruction() == 0) {
+        cpu->printAll();
         if (debugMode) {
-            cpu->printAll();
+            char input;
+            std::cout << "Press enter to continue" << std::endl;
+            std::cin.get();
+            std::cin.get();
         }
     }
+    // }
     return 0;
 }
 int main(const int argc, const char* argv[]) {
