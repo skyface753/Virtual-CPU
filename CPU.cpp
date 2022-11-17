@@ -138,8 +138,8 @@ Z
               << std::endl;
 }
 
+// Decrement blockCounter
 void CPU::processBlocked() {
-    // Decrement timeToBlock
     // If timeToBlock == 0, move to waitingQueue
     std::queue<Process*> tempQueue;
     while (!this->blockedQueue.empty()) {
@@ -270,8 +270,6 @@ int CPU::interpretInstruction() {
     // this->running->pc = this->stepCounter;
     // this->running->value = this->value;
 
-    // Sleep for 100 ms to simulate a cycle
-    std::this_thread::sleep_for(std::chrono::milliseconds(300));
     return 0;
 }
 

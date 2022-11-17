@@ -1,4 +1,6 @@
+#include <chrono>
 #include <iostream>
+#include <thread>
 
 #include "CPU.h"
 
@@ -34,6 +36,9 @@ int run(CPU* cpu, bool debugMode) {
             std::cin.get();
             std::cin.get();
         }
+
+        // Sleep for 100 ms to simulate a cycle
+        std::this_thread::sleep_for(std::chrono::milliseconds(300));
     }
     // }
     return 0;
